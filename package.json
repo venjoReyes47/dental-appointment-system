@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/venjoReyes47/Server.git"
+  },
+  "author": "Venjo Reyes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venjoReyes47/Server/issues"
+  },
+  "homepage": "https://github.com/venjoReyes47/Server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mssql": "^11.0.1",
+    "mysql2": "^3.12.0",
+    "node": "^21.6.2",
+    "nodemailer": "^6.10.0",
+    "nodemon": "^3.1.0",
+    "sequelize": "^6.37.5",
+    "socket.io": "^4.7.5"
+  }
+}
