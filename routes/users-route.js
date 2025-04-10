@@ -4,9 +4,9 @@ const { getAllUsers, createUser, login, verifyToken } = require("../controller/u
 const { validateToken } = require("../middleware/Middleware");
 // All routes require authentication
 // Register new user
-router.post("/register", [validateToken], createUser);
+router.post("/register", createUser);
 
-router.route("/", [validateToken])
+router.route("/")
     .get(getAllUsers)
     .post(createUser);
 

@@ -14,7 +14,21 @@ const rolesRoute = require("./routes/roles-route");
 const dentistRoute = require("./routes/dentist-route");
 const servicesRoute = require('./routes/services-route');
 
-// CORS CONFIGURATION
+// // CORS CONFIGURATION
+// var corsOptions = {
+//     origin: function (origin, callback) {
+//         /*PLEASE DONT FORGET TO COMMENT THE NEXT CODE : FOR POSTMAN TESTING ONLY*/
+//         // console.log(origin)
+//         //return callback(null, true); //COMMENT THIS CODE
+//         if (whitelist.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             // callback(new Error("Access is denied."));
+//             callback(null, true);
+//         }
+//     },
+// };
+
 const corsOptions = {
     origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps or curl requests)
@@ -25,20 +39,21 @@ const corsOptions = {
             'http://localhost:3000',      // Local development
             'http://localhost:8080',      // Local development
             'http://localhost:5173',      // Local development
-            'http://192.168.254.114:8080',
-            'http://192.168.1.9:8080',
-            'http://example2.com'
+            'http://dental-frontend.s3-website-ap-southeast-1.amazonaws.com',
+
         ];
 
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        // Check if the origin matches any of the allowed origins
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.includes('dental-frontend.s3-website-ap-southeast-1.amazonaws.com')) {
             callback(null, true);
         } else {
-            console.log('Blocked CORS request from:', origin);
-            callback(new Error('Not allowed by CORS'));
+            callback(null, true);
+            // console.log('Blocked CORS request from:', origin);
+            // callback(new Error('Not allowed by CORS'));
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     credentials: true,
     maxAge: 86400 // 24 hours
 }
@@ -49,6 +64,7 @@ app.use(bodyParser.json());
 app.use(express.json({ limit: '10000mb' }));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false, limit: '10000mb', parameterLimit: 50000 }));
+
 
 // ENDPOINTS (API CALLS) ------------------
 app.use("/api/users", userRoute);
@@ -65,7 +81,6 @@ app.use((error, req, res, next) => {
     }
     const success = error.code === 200 || error.code === 201;
     const statusCode = error.code || 500;
-    console.log(error.code)
     if (error.code === 401) {
         res.status(401).json({
             message: error.message || "An unknown error occurred",
