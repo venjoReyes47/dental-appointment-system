@@ -14,20 +14,6 @@ const rolesRoute = require("./routes/roles-route");
 const dentistRoute = require("./routes/dentist-route");
 const servicesRoute = require('./routes/services-route');
 
-// // CORS CONFIGURATION
-// var corsOptions = {
-//     origin: function (origin, callback) {
-//         /*PLEASE DONT FORGET TO COMMENT THE NEXT CODE : FOR POSTMAN TESTING ONLY*/
-//         // console.log(origin)
-//         //return callback(null, true); //COMMENT THIS CODE
-//         if (whitelist.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             // callback(new Error("Access is denied."));
-//             callback(null, true);
-//         }
-//     },
-// };
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -47,9 +33,9 @@ const corsOptions = {
         if (allowedOrigins.indexOf(origin) !== -1 || origin.includes('dental-frontend.s3-website-ap-southeast-1.amazonaws.com')) {
             callback(null, true);
         } else {
-            callback(null, true);
-            // console.log('Blocked CORS request from:', origin);
-            // callback(new Error('Not allowed by CORS'));
+            // callback(null, true);
+            console.log('Blocked CORS request from:', origin);
+            callback(new Error('Not allowed by CORS'));
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
