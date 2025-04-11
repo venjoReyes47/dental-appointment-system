@@ -161,13 +161,10 @@ The configuration is also included in this repository, should you wish to review
 
 ## Assumptions and Dependencies
 
-### Assumptions
+### Capability
 1. Users have valid email addresses
-2. Appointments are scheduled in 30-minute intervals
-3. Dentists have fixed working hours
-4. Services have fixed durations
-5. System operates in a single timezone
-6. Patient can receive email after dentist confirmation
+2. System operates in a single timezone
+3. Patient can receive email after dentist confirmation
 
 ### Dependencies
 - Node.js
@@ -203,4 +200,3 @@ The system implements a centralized error handling mechanism:
 2. Online payment integration
 3. Patient portal
 5. Analytics dashboard
-6. Multi-language support
