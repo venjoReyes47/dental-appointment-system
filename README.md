@@ -112,7 +112,7 @@ The Dental Care Appointment System is a full-stack application designed to manag
 
 The backend are deployed on Kubernetes for better scalability and management. Here's an overview of the deployment process:
 
-#### Prerequisites
+#### Prerequisites i used to deploy
 - Kubernetes cluster (EKS, GKE, or self-hosted)
 - kubectl configured
 - Docker installed
@@ -136,7 +136,7 @@ The backend are deployed on Kubernetes for better scalability and management. He
 
 ## Environment Setup
 
-### Required Environment Variables (dental-secret.yaml)
+
 ```
   DB_USER: database username
   DB_PASS: database password
@@ -148,6 +148,16 @@ The backend are deployed on Kubernetes for better scalability and management. He
 
 
 ```
+
+### Required Environment Variables (k8s)
+The configuration is also included in this repository, should you wish to review how the setup, configuration, and deployment have been implemented for this Node.js API.
+
+ - Dockerfile
+ - k8s / dental-configmap.yaml
+ - k8s / dental-secret.yaml
+ - k8s / deployment.yaml
+ - k8s / service.yaml
+
 
 ## Assumptions and Dependencies
 
