@@ -159,11 +159,10 @@ The configuration is also included in this repository, should you wish to review
  - k8s / service.yaml
 
 
-## Assumptions and Dependencies
+## Capability and Dependencies
 
 ### Capability
-1. Users have valid email addresses
-2. System operates in a single timezone
+1. CRUD operation for every operation
 3. Patient can receive email after dentist confirmation
 
 ### Dependencies
